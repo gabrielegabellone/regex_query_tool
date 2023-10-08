@@ -1,0 +1,17 @@
+<h1>Regex Query Tool</h1>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="text" name="text_string" size="50" placeholder="Enter a string" style="height:50px"><br><br>
+    <input type="text" name="regex" size="50" placeholder="Enter a regular expression" style="height:50px"><br><br>
+    <input type="submit" value="Check" />
+</form>
+{% if strings_found %}
+The following occurrences were found:
+<ul>
+{% for s in strings_found %}
+<li>{{ s }}</li>
+{% endfor %}
+</ul>
+{% else %}
+    No occurrences found.
+{% endif %}
